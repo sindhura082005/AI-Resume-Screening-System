@@ -1,4 +1,4 @@
-# AI Resume Screening System - TalentBay
+# AI Resume Screening System - NutraHire
 
 An AI-powered resume screening platform that evaluates multiple resumes against a job description in seconds and produces structured, ranked candidate assessments.
 
