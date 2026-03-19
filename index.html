@@ -405,7 +405,7 @@
                         selectedFiles.push(e.target.files[i]);
                     }
                 } else {
-                    alert("⚠️ Maximum 10 resumes allowed.");
+                    alert("Maximum 10 resumes allowed.");
                     break;
                 }
             }
@@ -456,8 +456,8 @@
             const formData = new FormData();
             
             const jd = jdInput.value.trim();
-            if (!jd) return alert("⚠️ Please paste a job description.");
-            if (selectedFiles.length === 0) return alert("⚠️ Please upload at least 1 PDF file.");
+            if (!jd) return alert("Please paste a job description.");
+            if (selectedFiles.length === 0) return alert("Please upload at least 1 PDF file.");
             
             formData.append("job_description", jd);
             
@@ -483,7 +483,7 @@
 
                 if (!response.ok) {
                     document.getElementById('error-msg').style.display = 'block';
-                    document.getElementById('error-msg').innerText = "❌ Error: " + (data.error || "Unknown server error.");
+                    document.getElementById('error-msg').innerText = "Error: " + (data.error || "Unknown server error.");
                     document.getElementById('welcome-state').style.display = 'block';
                     return;
                 }
@@ -548,7 +548,7 @@
             } catch(e) {
                 document.getElementById('loader').style.display = 'none';
                 document.getElementById('error-msg').style.display = 'block';
-                document.getElementById('error-msg').innerText = "❌ Network Exception: Is the API server running?";
+                document.getElementById('error-msg').innerText = "Network Exception: Is the API server running?";
                 document.getElementById('welcome-state').style.display = 'block';
             }
         });
