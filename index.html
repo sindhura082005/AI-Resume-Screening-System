@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NutraHire AI</title>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
@@ -33,6 +35,9 @@
             margin: 0 0 0.5rem 0;
             font-size: 1.1rem;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .sidebar label {
@@ -66,7 +71,10 @@
             text-align: center;
             cursor: pointer;
             transition: border-color 0.3s;
-            display: block;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
         }
         .sidebar .file-upload:hover { border-color: #58a6ff; }
         
@@ -82,6 +90,10 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(35, 134, 54, 0.3);
             width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
         .btn-screen:hover {
             transform: translateY(-2px);
@@ -110,6 +122,10 @@
             font-weight: 800;
             margin: 0;
             letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
         }
         .hero-header .accent {
             background: linear-gradient(90deg, #58a6ff, #3fb950, #58a6ff);
@@ -238,13 +254,22 @@
         .detail-card h3 { color: #e6edf3; font-size: 1.1rem; margin: 0 0 1rem 0; display: flex; align-items: center; }
         .detail-row { display: flex; gap: 2rem; }
         .detail-col { flex: 1; }
-        .detail-col h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+        .detail-col h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 6px; }
         .strength-label { color: #3fb950; }
         .gap-label { color: #f85149; }
         .detail-card ul { list-style: none; padding: 0; margin: 0; }
-        .detail-card ul li { color: #c9d1d9; font-size: 0.88rem; padding: 4px 0 4px 16px; position: relative; line-height: 1.5; }
-        .detail-card ul.strengths li::before { content: "✓"; position: absolute; left: 0; color: #3fb950; font-weight: 700; }
-        .detail-card ul.gaps li::before { content: "✗"; position: absolute; left: 0; color: #f85149; font-weight: 700; }
+        .detail-card ul li { color: #c9d1d9; font-size: 0.88rem; position: relative; line-height: 1.5; }
+        
+        .detail-card ul.strengths li { padding: 4px 0 4px 24px; }
+        .detail-card ul.strengths li::before { 
+            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%233fb950" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>'); 
+            position: absolute; left: 0; top: 6px; 
+        }
+        .detail-card ul.gaps li { padding: 4px 0 4px 24px; }
+        .detail-card ul.gaps li::before { 
+            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23f85149" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>'); 
+            position: absolute; left: 0; top: 6px; 
+        }
 
         /* Loader */
         .loader-container { display: none; text-align: center; padding: 4rem; }
@@ -253,6 +278,7 @@
 
         /* Welcome Message */
         .welcome-state { text-align: center; padding: 4rem 1rem; color: #8b949e; display: block; }
+        .flow-icons { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 2rem; color: #58a6ff; }
         
         .footer { text-align: center; padding: 2rem 0; color: #4b5563; font-size: 0.8rem; }
         
@@ -270,6 +296,9 @@
             .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; margin-top: 1rem; margin-bottom: 2rem; border: 1px solid #30363d; }
             .results-table { min-width: 700px; margin-top: 0; margin-bottom: 0; border: none; }
         }
+
+        .heading-with-icon { display: flex; align-items: center; gap: 8px; color: #e6edf3; }
+        .table-icons { display: flex; gap: 6px; align-items: center; }
     </style>
 </head>
 <body>
@@ -277,15 +306,16 @@
     <!-- SIDEBAR -->
     <div class="sidebar">
         <div>
-            <h3>📋 Job Description</h3>
+            <h3><i data-lucide="file-text"></i> Job Description</h3>
             <textarea id="job-description" rows="10" placeholder="Paste the complete job description here..."></textarea>
         </div>
         
         <hr style="border: 1px solid #30363d; width: 100%;">
         
         <div>
-            <h3>📄 Upload Resumes</h3>
+            <h3><i data-lucide="upload-cloud"></i> Upload Resumes</h3>
             <label class="file-upload">
+                <i data-lucide="file-up" style="color: #8b949e; width: 32px; height: 32px;"></i>
                 <span id="file-label">Click to select PDF files (Max 10)</span>
                 <input type="file" id="resume-files" multiple accept=".pdf" style="display: none;">
             </label>
@@ -294,20 +324,28 @@
 
         <hr style="border: 1px solid #30363d; width: 100%;">
 
-        <button class="btn-screen" id="btn-screen">🚀 Screen Resumes</button>
+        <button class="btn-screen" id="btn-screen">
+            <i data-lucide="zap"></i> Screen Resumes
+        </button>
     </div>
 
     <!-- MAIN CONTENT -->
     <div class="main-content">
         <div class="hero-header">
-            <h1>🎯 <span class="accent">Nutra</span>Hire AI</h1>
+            <h1><i data-lucide="target" style="color: #58a6ff;"></i> <span class="accent">Nutra</span>Hire AI</h1>
             <p>Upload resumes, paste a job description, and let AI rank your candidates instantly</p>
         </div>
         
         <div id="error-msg"></div>
 
         <div id="welcome-state" class="welcome-state">
-            <div style="font-size: 4rem; margin-bottom: 1rem;">📄 → 🤖 → 📊</div>
+            <div class="flow-icons">
+                <i data-lucide="file-text" style="width: 48px; height: 48px;"></i>
+                <i data-lucide="arrow-right"></i>
+                <i data-lucide="bot" style="width: 48px; height: 48px;"></i>
+                <i data-lucide="arrow-right"></i>
+                <i data-lucide="bar-chart-2" style="width: 48px; height: 48px;"></i>
+            </div>
             <h3 style="color: #e6edf3; font-weight: 600;">Ready to Screen Candidates</h3>
             <p style="max-width: 500px; margin: 0.5rem auto; line-height: 1.6;">
                 1. Paste your <strong style="color: #58a6ff;">Job Description</strong> in the sidebar<br>
@@ -325,7 +363,7 @@
         <div id="results-container" style="display: none;">
             <div class="metrics-row" id="metrics-row"></div>
             
-            <h3 style="color: #e6edf3;">📊 Candidate Rankings</h3>
+            <h3 class="heading-with-icon"><i data-lucide="bar-chart-2"></i> Candidate Rankings</h3>
             <div class="table-responsive">
                 <table class="results-table">
                     <thead>
@@ -342,7 +380,7 @@
                 </table>
             </div>
             
-            <h3 style="color: #e6edf3;">🔎 Detailed Analysis</h3>
+            <h3 class="heading-with-icon"><i data-lucide="search"></i> Detailed Analysis</h3>
             <div id="detail-cards"></div>
             
             <div class="footer">Built for NutraHire | HTML/JS, Flask & Groq AI</div>
@@ -350,6 +388,9 @@
     </div>
 
     <script>
+        // Initialize Lucide Icons for static elements unconditionally
+        lucide.createIcons();
+
         const fileInput = document.getElementById('resume-files');
         const fileLabel = document.getElementById('file-label');
         const btnScreen = document.getElementById('btn-screen');
@@ -381,18 +422,21 @@
             const num = selectedFiles.length;
             const container = document.getElementById('file-list-container');
             if (num > 0) {
-                fileLabel.innerHTML = `<strong>✅ ${num} file(s) added</strong><br><small style="color:#8b949e">Click to add more (Max 10)</small>`;
-                fileLabel.style.color = "#3fb950";
+                fileLabel.innerHTML = `<span style="display:flex;align-items:center;justify-content:center;gap:6px;"><i data-lucide="check-circle-2" style="color:#3fb950;"></i> ${num} file(s) added</span><small style="color:#8b949e;display:block;margin-top:4px;">Click to add more (Max 10)</small>`;
                 
                 container.innerHTML = selectedFiles.map((f, i) => `
-                    <div style="display:flex; justify-content:space-between; background:#161b22; padding:8px 12px; margin-top:8px; border-radius:6px; border:1px solid #30363d; font-size:0.85rem;">
-                        <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:#c9d1d9;">📄 ${f.name}</span>
-                        <span style="color:#f85149; cursor:pointer; font-weight:bold; margin-left:10px;" onclick="removeFile(${i})">✖</span>
+                    <div style="display:flex; justify-content:space-between; align-items:center; background:#161b22; padding:8px 12px; margin-top:8px; border-radius:6px; border:1px solid #30363d; font-size:0.85rem;">
+                        <span style="overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:#c9d1d9; display:flex; align-items:center; gap:6px;">
+                            <i data-lucide="file" style="width:14px; height:14px;"></i> ${f.name}
+                        </span>
+                        <span style="color:#f85149; cursor:pointer; margin-left:10px; display:flex; align-items:center;" onclick="removeFile(${i})">
+                            <i data-lucide="x" style="width:16px; height:16px;"></i>
+                        </span>
                     </div>
                 `).join('');
+                lucide.createIcons();
             } else {
                 fileLabel.innerHTML = "Click to select PDF files (Max 10)";
-                fileLabel.style.color = "#e6edf3";
                 container.innerHTML = "";
             }
         }
@@ -458,15 +502,15 @@
                 const tbody = document.getElementById('results-tbody');
                 tbody.innerHTML = "";
                 data.results.forEach(r => {
-                    const strengthsHtml = r.strengths.map(s => `✓ ${s}`).join("<br><br>");
-                    const gapsHtml = r.gaps.map(g => `✗ ${g}`).join("<br><br>");
+                    const strengthsHtml = r.strengths.map(s => `<div class="table-icons"><i data-lucide="check" style="color:#3fb950;width:14px;height:14px;"></i> <span>${s}</span></div>`).join("");
+                    const gapsHtml = r.gaps.map(g => `<div class="table-icons"><i data-lucide="x" style="color:#f85149;width:14px;height:14px;"></i> <span>${g}</span></div>`).join("");
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
                         <td align="center"><span class="rank-num">${r.rank || '-'}</span></td>
                         <td><strong>${r.candidate_name || r.file_name}</strong></td>
                         <td align="center"><span class="score-badge ${getScoreClass(r.match_score)}">${r.match_score}</span></td>
-                        <td style="color: #86efac;">${strengthsHtml}</td>
-                        <td style="color: #fca5a5;">${gapsHtml}</td>
+                        <td style="color: #c9d1d9;">${strengthsHtml}</td>
+                        <td style="color: #c9d1d9;">${gapsHtml}</td>
                         <td align="center"><span class="rec-badge ${getRecClass(r.recommendation)}">${r.recommendation}</span></td>
                     `;
                     tbody.appendChild(tr);
@@ -486,17 +530,20 @@
                             </h3>
                             <div class="detail-row">
                                 <div class="detail-col">
-                                    <h4 class="strength-label">✓ Key Strengths</h4>
+                                    <h4 class="strength-label"><i data-lucide="check-circle-2" style="width:14px;height:14px;"></i> Key Strengths</h4>
                                     <ul class="strengths">${st}</ul>
                                 </div>
                                 <div class="detail-col">
-                                    <h4 class="gap-label">✗ Key Gaps</h4>
+                                    <h4 class="gap-label"><i data-lucide="x-circle" style="width:14px;height:14px;"></i> Key Gaps</h4>
                                     <ul class="gaps">${gp}</ul>
                                 </div>
                             </div>
                         </div>
                     `;
                 });
+
+                // Render newly injected lucide icons
+                lucide.createIcons();
 
             } catch(e) {
                 document.getElementById('loader').style.display = 'none';
