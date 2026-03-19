@@ -23,7 +23,7 @@ An AI-powered resume screening tool that evaluates multiple resumes against a jo
 
 - **Python** — Core language
 - **Streamlit** — Web application framework
-- **Google Gemini API** — LLM for resume analysis
+- **Groq API** — LLM for resume analysis
 - **PyPDF2** — PDF text extraction
 - **pandas** — Data handling and CSV export
 
