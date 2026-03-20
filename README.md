@@ -4,6 +4,14 @@ An intelligent web application that analyzes resumes and ranks candidates based 
 
 ---
 
+## 🌐 Live Demo
+
+🔗 https://ai-resume-screening-jet.vercel.app/
+
+👉 Try uploading resumes and see AI ranking in action!
+
+---
+
 ## 🔥 Features
 
 - 📄 Upload multiple resumes (PDF)
