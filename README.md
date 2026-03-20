@@ -34,6 +34,12 @@ An intelligent web application that analyzes resumes and ranks candidates based 
 
 ## Setup & Run Locally
 
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/sindhura082005/AI-Resume-Screening-System.git
+cd AI-Resume-Screening-System
+
 ### 1. Install Dependencies
 ```bash
 pip install -r requirements.txt
@@ -59,6 +65,7 @@ python api/index.py
 python -m http.server 8505
 # Open your browser and go to http://localhost:8505
 ```
+---
 
 ### 4. Use the App
 1. Paste the **Job Description** in the sidebar.
@@ -73,6 +80,7 @@ This repository is configured out-of-the-box for deployment on **Vercel**.
 3. Add your `GROQ_API_KEY` to Vercel's Environment Variables.
 4. Hit Deploy!
 
+---
 
 ## Scoring Criteria
 
