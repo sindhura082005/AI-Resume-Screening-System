@@ -6,7 +6,7 @@ An intelligent web application that analyzes resumes and ranks candidates based 
 
 ## ⋆.📷˚ Demo
 
-"C:\Users\91888\Videos\demo.mp4"
+
 
 
 ## 🌐 Live Demo
