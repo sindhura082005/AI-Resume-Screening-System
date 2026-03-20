@@ -1,14 +1,27 @@
-# AI Resume Screening System - NutraHire
+# 💼 AI Resume Screening System
 
-An AI-powered resume screening platform that evaluates multiple resumes against a job description in seconds and produces structured, ranked candidate assessments.
+An intelligent web application that analyzes resumes and ranks candidates based on job description using AI.
 
-## Features
+---
 
-- **Smart Resume Parsing** — Extracts text from PDF resumes automatically using `PyPDF2`.
-- **Ultra-Fast AI Analysis** — Uses **Groq API (Llama-3.3-70b-versatile)** to evaluate each resume against the JD, ensuring near-instant results.
-- **Structured Output** — Provides a Match Score (0–100), 3 Key Strengths, 3 Key Gaps, and a final Recommendation.
-- **Candidate Ranking** — Candidates are dynamically sorted by match score (highest first).
-- **Vercel-Ready Architecture** — Built with a serverless Python Flask backend and a responsive Vanilla HTML/CSS/JS frontend replicating a premium dark UI.
+## 🔥 Features
+
+- 📄 Upload multiple resumes (PDF)
+- 🧠 AI-powered resume analysis
+- 📊 Candidate ranking with match score
+- ✅ Strengths & ❌ gaps identification
+- ⚡ Fast and responsive UI
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend** — HTML5, CSS3 (Custom Premium Dark Theme), Vanilla JS
+- **Backend Framework** — Python 3, Flask (Vercel Serverless Functions)
+- **AI / LLM** — Groq API (Llama 3.3 70B Model)
+- **PDF Processing** — PyPDF2 
+---
+
 
 ## Output Format
 
@@ -18,12 +31,6 @@ An AI-powered resume screening platform that evaluates multiple resumes against 
 | 2 | Candidate B | 62 | Good Python | No visualization tools | Moderate Fit |
 | 3 | Candidate C | 28 | Creative design skills | No data/SQL skills | Not Fit |
 
-## Tech Stack
-
-- **Frontend** — HTML5, CSS3 (Custom Premium Dark Theme), Vanilla JS
-- **Backend Framework** — Python 3, Flask (Vercel Serverless Functions)
-- **AI / LLM** — Groq API (Llama 3.3 70B Model)
-- **PDF Processing** — PyPDF2
 
 ## Setup & Run Locally
 
@@ -66,12 +73,6 @@ This repository is configured out-of-the-box for deployment on **Vercel**.
 3. Add your `GROQ_API_KEY` to Vercel's Environment Variables.
 4. Hit Deploy!
 
-## Sample Data (Testing Edge-Cases)
-The `sample_data/` folder contains a `job_description.txt` and 5 custom-tailored sample resumes to quickly test the application's ranking accuracy without hunting for real resumes.
-You can regenerate or modify them via:
-```bash
-python generate_samples.py
-```
 
 ## Scoring Criteria
 
